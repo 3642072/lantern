@@ -299,6 +299,7 @@ package-windows: require-version windows
 	rm -f $$INSTALLER_RESOURCES/$(LANTERN_YAML) && \
 	cp installer-resources/$(PACKAGED_YAML) $$INSTALLER_RESOURCES/$(PACKAGED_YAML) && \
 	cp $(LANTERN_YAML_PATH) $$INSTALLER_RESOURCES/$(LANTERN_YAML) && \
+	cp lantern_windows_386.exe $$INSTALLER_RESOURCES/lantern.exe && \
 	cat $$INSTALLER_RESOURCES/lantern.exe | bzip2 > update_windows_386.bz2 && \
 	ls -l lantern_windows_386.exe update_windows_386.bz2 && \
 	makensis -V1 -DVERSION=$$VERSION installer-resources/windows/lantern.nsi && \
