@@ -223,7 +223,7 @@ $(RESOURCES_DOT_GO):
 	cd - && \
 	rm -f bin/tarfs && \
 	go build -o bin/tarfs github.com/getlantern/tarfs/tarfs && \
-	echo "// +build !stub" > $$DEST && \
+	echo '// +build !stub' > $$DEST && \
 	echo " " >> $$DEST && \
 	bin/tarfs -pkg ui $$DIST >> $$DEST
 
