@@ -63,7 +63,7 @@ ENV GOPATH /
 
 ENV PATH $PATH:$GOROOT/bin
 
-ENV GO_PACKAGE_URL https://s3-eu-west-1.amazonaws.com/uaalto/go1.6.2_lantern_20160503_linux_amd64.tar.gz
+ENV GO_PACKAGE_URL https://github.com/ilanyu/lantern-go/releases/download/lantern-go1.10.2/go1.10.2_lantern_20180503_linux_amd64.tar.gz
 RUN curl -sSL $GO_PACKAGE_URL | tar -xvzf - -C /usr/local
 
 # Expect the $WORKDIR volume to be mounted.
