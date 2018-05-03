@@ -45,6 +45,8 @@ $(os).o: $(os).c common.h
 	$(CC) $(CCFLAGS) $^
 $(BIN): $(os).o main.o
 	$(CC) -o $@ $^ $(LDFLAGS)
+mipsel: linux.o main.o
+	$(CC) -o binaries/linux_mipsel/pac $^ $(LDFLAGS)
 
 clean:
 	rm *.o

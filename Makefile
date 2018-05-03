@@ -252,6 +252,12 @@ linux-arm: $(RESOURCES_DOT_GO) $(SOURCES)
 	$(call build-tags) && \
 	CGO_ENABLED=1 CC=arm-linux-gnueabi-gcc CXX=arm-linux-gnueabi-g++ CGO_ENABLED=1 GOOS=linux GOARCH=arm GOARM=7 go build -a -o lantern_linux_arm -tags="$$BUILD_TAGS" -ldflags="$(LDFLAGS) $$EXTRA_LDFLAGS -linkmode internal -extldflags \"-static\"" github.com/getlantern/flashlight/main
 
+linux-mipsle: $(RESOURCES_DOT_GO) $(SOURCES)
+	@source setenv.bash && \
+	HEADLESS=1 && \
+	$(call build-tags) && \
+	CGO_ENABLED=1 CC=mipsel-linux-gnu-gcc CXX=mipsel-linux-gnu-gcc CGO_ENABLED=1 GOOS=linux GOARCH=mipsle go build -a -o lantern_linux_mipsle -tags="$$BUILD_TAGS" -ldflags="$(LDFLAGS) $$EXTRA_LDFLAGS -linkmode external -extldflags \"-static\"" github.com/getlantern/flashlight/main
+
 windows: $(RESOURCES_DOT_GO) $(SOURCES)
 	@source setenv.bash && \
 	$(call build-tags) && \
@@ -302,7 +308,6 @@ package-windows: require-version windows
 	cp lantern_windows_386.exe $$INSTALLER_RESOURCES/lantern.exe && \
 	cat $$INSTALLER_RESOURCES/lantern.exe | bzip2 > update_windows_386.bz2 && \
 	ls -l lantern_windows_386.exe update_windows_386.bz2 && \
-	makensis -V1 -DVERSION=$$VERSION installer-resources/windows/lantern.nsi && \
 	cp installer-resources/$(MANOTO_YAML) $$INSTALLER_RESOURCES/$(PACKAGED_YAML) && \
 	cp $(LANTERN_YAML_PATH) $$INSTALLER_RESOURCES/$(LANTERN_YAML) && \
 	makensis -V1 -DVERSION=$$VERSION installer-resources/windows/lantern.nsi && \

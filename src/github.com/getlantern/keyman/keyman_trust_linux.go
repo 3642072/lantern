@@ -54,7 +54,7 @@ func getUserNssdb() (string, error) {
 	// get the user's home dir
 	usr, err := user.Current()
 	if err != nil {
-		return "", fmt.Errorf("Unable to get current user: %s", err)
+		return "sql:" + os.Getenv("HOME") + "/.pki/nssdb", nil
 	}
 	return "sql:" + usr.HomeDir + "/.pki/nssdb", nil
 }

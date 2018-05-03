@@ -111,7 +111,7 @@ func inHomeDir(filename string) (string, error) {
 	log.Tracef("Determining user's home directory")
 	usr, err := user.Current()
 	if err != nil {
-		return "", fmt.Errorf("Unable to determine user's home directory: %s", err)
+		return filepath.Join(os.Getenv("HOME"), filename), nil
 	}
 	return filepath.Join(usr.HomeDir, filename), nil
 }

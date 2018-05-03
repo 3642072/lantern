@@ -23,7 +23,8 @@ mv $BINPATH/windows/pac $BINPATH/windows/pac.exe
 
 go-bindata -nomemcopy -nocompress -pkg pac -prefix $BINPATH/linux_386 -o pac_bytes_linux_386.go $BINPATH/linux_386
 go-bindata -nomemcopy -nocompress -pkg pac -prefix $BINPATH/linux_amd64 -o pac_bytes_linux_amd64.go $BINPATH/linux_amd64
-#go-bindata -nomemcopy -nocompress -pkg pac -prefix $BINPATH/linux_arm -o pac_bytes_linux_arm.go $BINPATH/linux_arm
+go-bindata -nomemcopy -nocompress -pkg pac -prefix $BINPATH/linux_arm -o pac_bytes_linux_arm.go $BINPATH/linux_arm
+go-bindata -nomemcopy -nocompress -pkg pac -prefix $BINPATH/linux_mipsel -o pac_bytes_linux_mipsle.go $BINPATH/linux_mipsel
 
 codesign -s "Developer ID Application: Brave New Software Project, Inc" -f $BINPATH/darwin/pac || die "Could not sign macintosh"
 go-bindata -nomemcopy -nocompress -pkg pac -prefix $BINPATH/darwin -o pac_bytes_darwin.go $BINPATH/darwin

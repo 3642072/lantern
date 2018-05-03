@@ -3,7 +3,8 @@
 package appdir
 
 import (
-	"fmt"
+	"log"
+	"os"
 	"os/user"
 	"path/filepath"
 )
@@ -22,7 +23,8 @@ func Logs(app string) string {
 func InHomeDir(filename string) string {
 	usr, err := user.Current()
 	if err != nil {
-		panic(fmt.Errorf("Unable to determine user's home directory: %s", err))
+		log.Printf("[github.com/getlantern/appdir/appdir.go] Unable to determine user's home directory: %s, try $HOME as user's home directory", err)
+		return filepath.Join(os.Getenv("HOME"), filename)
 	}
 	return filepath.Join(usr.HomeDir, filename)
 }
