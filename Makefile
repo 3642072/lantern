@@ -293,8 +293,7 @@ package-linux-arm: require-version linux-arm
 	@$(call fpm-debian-build,"arm")
 	@echo "-> lantern_$(VERSION)_arm.deb"
 
-package-windows: $(BNS_CERT) require-version windows
-	@if [[ -z "$$BNS_CERT_PASS" ]]; then echo "BNS_CERT_PASS environment value is required."; exit 1; fi && \
+package-windows: require-version windows
 	INSTALLER_RESOURCES="installer-resources/windows" && \
 	rm -f $$INSTALLER_RESOURCES/$(PACKAGED_YAML) && \
 	rm -f $$INSTALLER_RESOURCES/$(LANTERN_YAML) && \

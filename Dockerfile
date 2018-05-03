@@ -59,7 +59,7 @@ RUN npm install -g gulp
 
 # Getting Go.
 ENV GOROOT /usr/local/go
-ENV GOPATH /
+ENV GOPATH /lantern
 
 ENV PATH $PATH:$GOROOT/bin
 
